@@ -80,8 +80,11 @@ body{background:#E8E5DE;color:var(--text)}
 .abt.res{background:var(--gold);color:var(--dark)}
 .abt.can{background:#FEE2E2;color:var(--red)}
 .abt:disabled{opacity:.35;cursor:not-allowed}
-.map-area{flex:1;overflow:auto;background:#C8C4BC;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px}
-.fp{position:relative;width:850px;height:547px;flex-shrink:0;background:#E8E4DC;border-radius:6px;box-shadow:0 12px 48px rgba(0,0,0,0.22);overflow:hidden;background-size:contain;background-repeat:no-repeat;background-position:center}
+.map-area{flex:1;overflow:auto;background:#C8C4BC;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;touch-action:pan-x pan-y}
+.fp{position:relative;width:850px;height:547px;flex-shrink:0;background:#E8E4DC;border-radius:6px;box-shadow:0 12px 48px rgba(0,0,0,0.22);overflow:hidden;background-size:contain;background-repeat:no-repeat;background-position:center;transform-origin:top left;transition:transform 0.1s}
+.map-zoom-ctrl{position:absolute;bottom:24px;left:16px;z-index:100;display:flex;gap:6px;align-items:center}
+.zoom-btn{width:36px;height:36px;background:var(--dark);color:#fff;border:none;border-radius:8px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.zoom-label{background:var(--dark);color:rgba(255,255,255,0.7);font-size:11px;padding:4px 8px;border-radius:6px;font-family:'DM Mono',monospace}
 .fp-border{position:absolute;inset:0;border:3px solid rgba(90,85,80,0.4);border-radius:6px;z-index:3;pointer-events:none}
 .seat{position:absolute;z-index:10;border-radius:3px;border:1.5px solid transparent;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;display:flex;align-items:center;justify-content:center;font-size:5.5px;font-weight:700;font-family:'DM Mono',monospace;user-select:none}
 .seat.avail{background:rgba(46,165,90,0.82);border-color:#1A7A40;color:rgba(255,255,255,0.95)}
@@ -206,7 +209,13 @@ tr:hover td{background:var(--surface)}
         <div class="det-empty"><div class="ico">👆</div>지도에서 좌석을 클릭하면<br>상세 정보가 표시됩니다</div>
       </div>
     </div>
-    <div class="map-area">
+    <div class="map-area" id="map-area">
+      <div class="map-zoom-ctrl">
+        <button class="zoom-btn" id="btn-zoom-out">−</button>
+        <span class="zoom-label" id="zoom-label">100%</span>
+        <button class="zoom-btn" id="btn-zoom-in">+</button>
+        <button class="zoom-btn" id="btn-zoom-fit" style="width:auto;padding:0 10px;font-size:11px">맞춤</button>
+      </div>
       <div class="fp" id="fp">
         <div class="fp-border"></div>
         <div id="slayer"></div>
