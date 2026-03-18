@@ -452,15 +452,14 @@ async function loadFromSheet(){
 }
 
 function checkMidnightReset(){
-  const now=new Date();
-  const lastReset=localStorage.getItem('pk_last_reset');
-  const today=now.toISOString().slice(0,10);
-  if(lastReset!==today && now.getHours()===0){
-    localStorage.removeItem(SKEY());
-    localStorage.setItem('pk_last_reset',today);
-    showToast('🔄 자정 자동 초기화 완료');
-    renderMap();
+  const today = new Date().toISOString().slice(0,10);
+  const lastDate = localStorage.getItem('pk_last_date');
+  if(lastDate && lastDate !== today) {
+    // 날짜가 바뀌었으면 초기화
+    localStorage.removeItem('pk_res_' + lastDate);
+    showToast('🔄 날짜가 바뀌어 예약이 초기화되었습니다');
   }
+  localStorage.setItem('pk_last_date', today);
 }
 
 function showToast(msg){
@@ -479,7 +478,7 @@ function startClock(){
   };
   tick();setInterval(tick,1000);
   setInterval(async()=>{await loadFromSheet();renderMap();},30000);
-  setInterval(checkMidnightReset,60000);
+  setInterval(checkMidnightReset, 60000);
 }
 
 function doLogin(){
@@ -504,6 +503,7 @@ async function enterApp(){
   document.getElementById('ms-date').textContent=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
   document.getElementById('huser').innerHTML=`<strong>${CU.name}</strong>`;
   startClock();
+  checkMidnightReset();
   await loadFromSheet();
   renderMap();
 }
