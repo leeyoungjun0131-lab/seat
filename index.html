@@ -11,8 +11,6 @@
 html,body{height:100%;font-family:'Noto Sans KR',sans-serif}
 body{background:#E8E5DE;color:var(--text)}
 .hidden{display:none!important}
-
-/* 로그인 */
 #login{min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .lg-glow{position:absolute;border-radius:50%;pointer-events:none}
 .lg-glow.a{width:700px;height:700px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(253,184,19,0.09) 0%,transparent 65%)}
@@ -35,8 +33,6 @@ body{background:#E8E5DE;color:var(--text)}
 .lg-policy .hl{color:var(--gold);font-weight:700}
 .tlock{background:rgba(214,48,48,0.1);border:1px solid rgba(214,48,48,0.28);border-radius:10px;padding:12px 16px;text-align:center;color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:14px;line-height:1.7}
 .tlock strong{color:#FF8A80;font-size:14px}
-
-/* 앱 */
 #app{display:none;flex-direction:column;height:100vh;overflow:hidden}
 .hdr{height:54px;background:var(--dark);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(253,184,19,0.1);z-index:50}
 .hdr-l{display:flex;align-items:center;gap:18px}
@@ -56,12 +52,8 @@ body{background:#E8E5DE;color:var(--text)}
 .hdr-user strong{color:#fff}
 .lo-btn{background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit}
 .lo-btn:hover{border-color:var(--red);color:#FF8A80}
-
-/* 패널 */
 .panel{display:none;flex:1;overflow:hidden;flex-direction:column}
 .panel.active{display:flex}
-
-/* 데스크탑 맵 패널 */
 #map-panel{flex-direction:row;position:relative}
 .sidebar{width:268px;flex-shrink:0;background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sb-hd{padding:15px 17px 11px;border-bottom:1px solid var(--border)}
@@ -88,7 +80,6 @@ body{background:#E8E5DE;color:var(--text)}
 .abt.res{background:var(--gold);color:var(--dark)}
 .abt.can{background:#FEE2E2;color:var(--red)}
 .abt:disabled{opacity:.35;cursor:not-allowed}
-
 .map-area{flex:1;overflow:auto;background:#C8C4BC;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px}
 .fp{position:relative;width:850px;height:547px;flex-shrink:0;background:#E8E4DC;border-radius:6px;box-shadow:0 12px 48px rgba(0,0,0,0.22);overflow:hidden;background-size:contain;background-repeat:no-repeat;background-position:center}
 .fp-border{position:absolute;inset:0;border:3px solid rgba(90,85,80,0.4);border-radius:6px;z-index:3;pointer-events:none}
@@ -102,16 +93,12 @@ body{background:#E8E5DE;color:var(--text)}
 .pin-body{width:20px;height:20px;background:var(--gold);border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(253,184,19,0.6)}
 .pin-body::after{content:'★';display:block;transform:rotate(45deg);font-size:9px;color:var(--dark);text-align:center;line-height:20px}
 @keyframes pb{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-/* 모바일 맵 패널 */
 #mobile-map-panel{display:none;flex-direction:column;flex:1;overflow:hidden;position:relative}
 .mobile-stat-bar{height:44px;background:var(--white);display:flex;align-items:center;justify-content:space-around;border-bottom:1px solid var(--border);flex-shrink:0}
 .mobile-stat-item{text-align:center}
 .mobile-stat-n{font-size:16px;font-weight:900;font-family:'DM Mono',monospace;line-height:1}
 .mobile-stat-l{font-size:9px;color:var(--muted);margin-top:1px}
 .mobile-map-area{flex:1;overflow:auto;background:#C8C4BC;padding:12px;-webkit-overflow-scrolling:touch}
-
-/* 모바일 하단 시트 */
 .bottom-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--white);border-radius:20px 20px 0 0;padding:16px 20px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.15);transform:translateY(100%);transition:transform 0.3s ease;z-index:100}
 .bottom-sheet.open{transform:translateY(0)}
 .bs-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 14px}
@@ -124,14 +111,10 @@ body{background:#E8E5DE;color:var(--text)}
 .bs-btn:disabled{opacity:.35}
 .bs-overlay{position:absolute;inset:0;z-index:99;display:none}
 .bs-overlay.open{display:block}
-
-/* 하단 네비 (모바일) */
 .bottom-nav{height:56px;background:var(--dark);display:flex;align-items:center;justify-content:space-around;flex-shrink:0;border-top:1px solid rgba(255,255,255,0.05)}
-.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(255,255,255,0.35);font-size:9px;cursor:pointer;padding:6px 16px;border-radius:8px}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(255,255,255,0.35);font-size:9px;cursor:pointer;padding:6px 16px;border-radius:8px;-webkit-tap-highlight-color:transparent}
 .bnav-item.active{color:var(--gold)}
 .bnav-icon{font-size:20px}
-
-/* 내 예약 패널 */
 #my-panel{overflow-y:auto;padding:28px}
 .pi{max-width:700px;margin:0 auto;width:100%}
 .ph{font-size:20px;font-weight:900}
@@ -144,8 +127,6 @@ body{background:#E8E5DE;color:var(--text)}
 .empty-box{text-align:center;padding:52px 20px;color:var(--muted)}
 .empty-box .eico{font-size:42px;margin-bottom:10px}
 .empty-box p{font-size:13px;line-height:1.8}
-
-/* 관리자 패널 */
 #admin-panel{overflow-y:auto;padding:28px}
 .ai{max-width:900px;margin:0 auto;width:100%}
 .acards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
@@ -167,13 +148,10 @@ td{padding:11px 18px;font-size:12px;border-bottom:1px solid var(--border)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--surface)}
 .mono{font-family:'DM Mono',monospace;font-size:11px}
-
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--dark);color:#fff;padding:10px 20px;border-radius:40px;font-size:12px;font-weight:500;z-index:9999;border:1px solid rgba(253,184,19,0.22);box-shadow:0 8px 32px rgba(0,0,0,0.28);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:2px}
-
-/* 반응형 */
 @media(max-width:768px){
   .hdr .nav{display:none}
   .hdr .lo-btn{display:none}
@@ -193,7 +171,6 @@ tr:hover td{background:var(--surface)}
 </style>
 </head>
 <body>
-
 <div id="login">
   <div class="lg-glow a"></div><div class="lg-glow b"></div>
   <div class="lg-card">
@@ -243,7 +220,6 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
-  <!-- 데스크탑 맵 패널 -->
   <div class="panel active" id="map-panel">
     <div class="sidebar">
       <div class="sb-hd"><div class="sb-title">오늘의 좌석 현황</div><div class="sb-date" id="sbdate"></div></div>
@@ -276,7 +252,6 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
-  <!-- 모바일 맵 패널 -->
   <div id="mobile-map-panel">
     <div class="mobile-stat-bar">
       <div class="mobile-stat-item"><div class="mobile-stat-n" style="color:var(--gold)" id="ms-total">-</div><div class="mobile-stat-l">전체</div></div>
@@ -291,16 +266,13 @@ tr:hover td{background:var(--surface)}
         <div class="pin hidden" id="mypin-mobile"><div class="pin-body"></div></div>
       </div>
     </div>
-    <!-- 오버레이 -->
     <div class="bs-overlay" id="bs-overlay"></div>
-    <!-- 하단 시트 -->
     <div class="bottom-sheet" id="bottom-sheet">
       <div class="bs-handle"></div>
       <div id="bs-content"></div>
     </div>
   </div>
 
-  <!-- 내 예약 패널 -->
   <div class="panel" id="my-panel">
     <div class="pi">
       <div class="ph">내 예약 현황</div>
@@ -309,7 +281,6 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
-  <!-- 관리자 패널 -->
   <div class="panel" id="admin-panel">
     <div class="ai">
       <div class="ph">관리자 현황판</div>
@@ -345,18 +316,17 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
-  <!-- 하단 네비 (모바일) -->
   <div class="bottom-nav" style="display:none">
-    <div class="bnav-item active" id="bnav-map" onclick="goTabMobile('map')">
+    <div class="bnav-item active" id="bnav-map">
       <div class="bnav-icon">🗺</div><div>좌석지도</div>
     </div>
-    <div class="bnav-item" id="bnav-my" onclick="goTabMobile('my')">
+    <div class="bnav-item" id="bnav-my">
       <div class="bnav-icon">📋</div><div>내 예약</div>
     </div>
-    <div class="bnav-item hidden" id="bnav-admin" onclick="goTabMobile('admin')">
+    <div class="bnav-item hidden" id="bnav-admin">
       <div class="bnav-icon">⚙️</div><div>관리자</div>
     </div>
-    <div class="bnav-item" id="bnav-logout" onclick="doLogout()">
+    <div class="bnav-item" id="bnav-logout">
       <div class="bnav-icon">🚪</div><div>로그아웃</div>
     </div>
   </div>
@@ -365,7 +335,7 @@ tr:hover td{background:var(--surface)}
 <div class="toast" id="toast"></div>
 
 <script>
-const SEATS = [
+const SEATS=[
   ['001',229,129,28,20],['002',265,129,28,20],
   ['003',185,168,20,28],['004',185,202,20,28],
   ['005',238,174,28,20],['006',238,202,28,20],
@@ -385,10 +355,11 @@ const SEATS = [
   ['033',782,145,28,20],['034',783,167,28,20],['035',782,216,28,20],
   ['036',813,145,28,20],['037',814,167,28,20],['038',813,216,28,20],
 ];
-const TOTAL = SEATS.length;
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyQJFsIReT4DnRSZQ8T2KFhW9ict4FBrXK0v-fpVwGs5mFNTeMQT6APq2eXrxC6WZla/exec';
+const TOTAL=SEATS.length;
+const SHEET_URL='https://script.google.com/macros/s/AKfycbyQJFsIReT4DnRSZQ8T2KFhW9ict4FBrXK0v-fpVwGs5mFNTeMQT6APq2eXrxC6WZla/exec';
+const MAP_IMG="url('https://i.imgur.com/dNX783P.png')";
 
-const DEFAULT_USERS = {
+const DEFAULT_USERS={
   'soohyun.kwon':{name:'권수현',isAdmin:false},'jungeun.kwon':{name:'권정은',isAdmin:false},
   'kwangil.kim':{name:'김광일',isAdmin:false},'donggeun.kim':{name:'김동근',isAdmin:false},
   'mikyoung.kim':{name:'김미경',isAdmin:false},'sungyoun.kim':{name:'김성연',isAdmin:false},
@@ -403,9 +374,8 @@ const DEFAULT_USERS = {
   'jungmin.yang':{name:'양정민',isAdmin:false},'changyeol.yoo':{name:'유창열',isAdmin:false},
   'junseong.yun':{name:'윤준성',isAdmin:false},'hanah.yoon':{name:'윤한아',isAdmin:false},
   'sooyeon.lee':{name:'이수연',isAdmin:false},'seulki.lee':{name:'이슬기',isAdmin:false},
-  'seungjin.lee':{name:'이승진',isAdmin:false},'youngjun.lee':{name:'이영준',isAdmin:false},
+  'seungjin.lee':{name:'이승진',isAdmin:false},'youngjun.lee':{name:'이영준',isAdmin:true},
   'yohan.lee':{name:'이요한',isAdmin:false},'youla.lee':{name:'이유라',isAdmin:true},
-  'youngjun.lee':{name:'이영준',isAdmin:true},'admin':{name:'admin',isAdmin:true},
   'chaemi.lee':{name:'이채미',isAdmin:false},'hyunju.lee':{name:'이현주',isAdmin:false},
   'heesun.lim':{name:'임희선',isAdmin:false},'hyoeun.jeon':{name:'전효은',isAdmin:false},
   'youngdon.jung':{name:'정영돈',isAdmin:false},'youngryul.jung':{name:'정영율',isAdmin:false},
@@ -415,65 +385,72 @@ const DEFAULT_USERS = {
   'kyunghyun.pyun':{name:'편경현',isAdmin:false},'yoo.huh':{name:'허유',isAdmin:false},
   'sungmoo.hong':{name:'홍승무',isAdmin:false},'juntae.hwang':{name:'황준태',isAdmin:false},
   'jiwon.hwang':{name:'황지원',isAdmin:false},
+  'admin':{name:'admin',isAdmin:true},
 };
 
-// 메모리 캐시 (Sheets 데이터 기준)
-let _resCache = {};
-const getRes = () => _resCache;
-const saveRes = d => { _resCache = d; };
+// Storage
 const getUsers=()=>{try{const s=localStorage.getItem('pk_users');return s?JSON.parse(s):{...DEFAULT_USERS};}catch{return{...DEFAULT_USERS};}};
 const saveUsers=d=>localStorage.setItem('pk_users',JSON.stringify(d));
 const getCU=()=>{try{const s=localStorage.getItem('pk_cu');return s?JSON.parse(s):null;}catch{return null;}};
 const saveCU=d=>localStorage.setItem('pk_cu',JSON.stringify(d));
 const clearCU=()=>localStorage.removeItem('pk_cu');
 
-const isMobile=()=>window.innerWidth<=768;
-let CU=null,SEL=null;
+// 메모리 캐시 (Sheets 기준)
+let _resCache={};
+const getRes=()=>_resCache;
+
+let CU=null,SEL=null,tt=null;
 const seatPos={};
+const isMobile=()=>window.innerWidth<=768;
 const canBook=()=>new Date().getHours()>=6;
 SEATS.forEach(([id,l,t,w,h])=>{seatPos[id]={l,t,w,h};});
 
 // Sheet 함수
-async function appendToSheet(date, seatId, userName, userId) {
-  try {
-    const params = new URLSearchParams({action:'reserve', date, seatId, userName, userId});
-    await fetch(SHEET_URL + '?' + params.toString());
-  } catch(e){ console.error(e); }
+async function appendToSheet(date,seatId,userName,userId){
+  try{
+    const p=new URLSearchParams({action:'reserve',date,seatId,userName,userId});
+    await fetch(SHEET_URL+'?'+p.toString());
+  }catch(e){console.error(e);}
 }
-
-async function cancelFromSheet(date, seatId) {
-  try {
-    const params = new URLSearchParams({action:'cancel', date, seatId});
-    await fetch(SHEET_URL + '?' + params.toString());
-  } catch(e){ console.error(e); }
+async function cancelFromSheet(date,seatId){
+  try{
+    const p=new URLSearchParams({action:'cancel',date,seatId});
+    await fetch(SHEET_URL+'?'+p.toString());
+  }catch(e){console.error(e);}
 }
 async function loadFromSheet(){
   try{
     const resp=await fetch(SHEET_URL+'?t='+Date.now());
     const data=await resp.json();
-    const res=getRes();
-    const merged={};
-    Object.entries(data).forEach(([sid,r])=>{merged[sid]={userId:r.userId,userName:r.userName,reservedAt:res[sid]?.reservedAt||''};});
-    Object.entries(res).forEach(([sid,r])=>{if(r.userId===CU?.id&&!merged[sid])merged[sid]=r;});
-    saveRes(merged);
-  }catch(e){console.error(e);}
+    _resCache={};
+    Object.entries(data).forEach(([sid,r])=>{
+      _resCache[sid]={userId:r.userId,userName:r.userName,reservedAt:''};
+    });
+    return true;
+  }catch(e){console.error(e);return false;}
 }
 
-function checkMidnightReset(){
-  const today = new Date().toISOString().slice(0,10);
-  const lastDate = localStorage.getItem('pk_last_date');
-  if(lastDate && lastDate !== today) {
-    localStorage.removeItem('pk_res_' + lastDate);
-  }
-  localStorage.setItem('pk_last_date', today);
-}
-
+// Toast
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.classList.add('show');
   clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);
 }
+function hideToast(){
+  const t=document.getElementById('toast');
+  t.classList.remove('show');
+  clearTimeout(tt);
+}
 
+// 자정 초기화 체크
+function checkMidnightReset(){
+  const today=new Date().toISOString().slice(0,10);
+  const lastDate=localStorage.getItem('pk_last_date');
+  if(lastDate&&lastDate!==today) _resCache={};
+  localStorage.setItem('pk_last_date',today);
+}
+
+// 시계
 function startClock(){
   const tick=()=>{
     const n=new Date();
@@ -481,12 +458,22 @@ function startClock(){
     const ok=canBook();
     const bs=document.getElementById('bstatus');
     bs.textContent=ok?'예약 가능':'예약 불가';bs.className='bstatus '+(ok?'ok':'no');
+    const lt=document.getElementById('lock-time');if(lt)lt.textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
   };
   tick();setInterval(tick,1000);
   setInterval(async()=>{await loadFromSheet();renderMap();},30000);
-  setInterval(checkMidnightReset, 60000);
+  setInterval(checkMidnightReset,60000);
 }
 
+// 도면 배경 적용
+function applyMapBg(){
+  ['fp','fp-mobile'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.style.backgroundImage=MAP_IMG;el.style.backgroundSize='contain';el.style.backgroundRepeat='no-repeat';el.style.backgroundPosition='center';}
+  });
+}
+
+// 로그인
 function doLogin(){
   const id=document.getElementById('inp-id').value.trim().toLowerCase();
   const nm=document.getElementById('inp-name').value.trim();
@@ -501,39 +488,57 @@ async function enterApp(){
   document.getElementById('login').style.display='none';
   document.getElementById('app').style.display='flex';
 
-  // 관리자 탭 초기화 후 조건부 표시
+  // 관리자 탭 초기화
   document.getElementById('nb-admin').classList.add('hidden');
   document.getElementById('bnav-admin').classList.add('hidden');
   if(CU.isAdmin){
     document.getElementById('nb-admin').classList.remove('hidden');
     document.getElementById('bnav-admin').classList.remove('hidden');
   }
+
   const dateStr=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
   document.getElementById('sbdate').textContent=dateStr;
   document.getElementById('ms-date').textContent=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
   document.getElementById('huser').innerHTML=`<strong>${CU.name}</strong>`;
 
-  // 로딩 표시
-  document.getElementById('slayer').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(0,0,0,0.4)">⏳ 좌석 현황 불러오는 중...</div>';
-  document.getElementById('slayer-mobile').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(0,0,0,0.4)">⏳ 좌석 현황 불러오는 중...</div>';
+  // 도면 먼저 적용
+  applyMapBg();
 
   startClock();
   checkMidnightReset();
+
+  // 로딩 표시
+  document.getElementById('slayer').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(0,0,0,0.4)">⏳ 불러오는 중...</div>';
+  document.getElementById('slayer-mobile').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(0,0,0,0.4)">⏳ 불러오는 중...</div>';
+
   await loadFromSheet();
   renderMap();
 }
 
+// 로그아웃
 function doLogout(){
   CU=null;SEL=null;
   clearCU();
   _resCache={};
-  const t=document.getElementById('toast');
-  t.classList.remove('show');
-  clearTimeout(tt);
-  document.getElementById('app').style.display='none';
-  document.getElementById('login').style.display='flex';
+  hideToast();
+  closeSheet();
+  // 관리자 탭 숨김
   document.getElementById('nb-admin').classList.add('hidden');
   document.getElementById('bnav-admin').classList.add('hidden');
+  // 탭 초기화
+  ['map','my','admin'].forEach(x=>{
+    document.getElementById(x+'-panel')?.classList.remove('active');
+    document.getElementById('nb-'+x)?.classList.remove('active');
+  });
+  document.getElementById('map-panel').classList.add('active');
+  document.getElementById('nb-map').classList.add('active');
+  document.getElementById('mobile-map-panel').style.display='';
+  ['bnav-map','bnav-my','bnav-admin'].forEach(x=>{
+    document.getElementById(x)?.classList.remove('active');
+  });
+  document.getElementById('bnav-map').classList.add('active');
+  document.getElementById('app').style.display='none';
+  document.getElementById('login').style.display='flex';
   document.getElementById('inp-id').value='';
   document.getElementById('inp-name').value='';
 }
@@ -554,15 +559,14 @@ function goTab(t){
 // 탭 전환 (모바일)
 function goTabMobile(t){
   ['map','my','admin'].forEach(x=>{
-    const p=document.getElementById(x+'-panel');
-    const mm=document.getElementById('mobile-map-panel');
-    if(x==='map'){mm.style.display='none';}
-    else if(p){p.classList.remove('active');}
+    document.getElementById(x+'-panel')?.classList.remove('active');
     document.getElementById('bnav-'+x)?.classList.remove('active');
   });
   document.getElementById('bnav-'+t)?.classList.add('active');
   if(t==='map'){
     document.getElementById('mobile-map-panel').style.display='flex';
+    document.getElementById('my-panel').classList.remove('active');
+    document.getElementById('admin-panel').classList.remove('active');
     renderMap();
   } else {
     document.getElementById('mobile-map-panel').style.display='none';
@@ -572,10 +576,10 @@ function goTabMobile(t){
   }
 }
 
+// 맵 렌더링
 function renderMap(){
   const res=getRes();
   let avail=0,taken=0,myPos=null;
-
   ['slayer','slayer-mobile'].forEach(layerId=>{
     const layer=document.getElementById(layerId);
     if(!layer)return;
@@ -583,44 +587,31 @@ function renderMap(){
     layer.innerHTML='';
     SEATS.forEach(([id])=>{
       const{l,t,w,h}=seatPos[id],r=res[id];let cls='avail';
-      if(r){cls=r.userId===CU.id?'mine':'taken';}
+      if(r)cls=r.userId===CU.id?'mine':'taken';
       const el=document.createElement('div');
       el.className=`seat ${cls}${SEL===id?' sel':''}`;
       el.style.cssText=`left:${l}px;top:${t}px;width:${w}px;height:${h}px`;
       el.dataset.id=id;
       el.textContent=r?r.userName.slice(0,3):id;
-      if(mobile) el.addEventListener('click',()=>clickSeatMobile(id));
-      else el.addEventListener('click',()=>clickSeat(id));
+      el.addEventListener('click',()=>mobile?clickSeatMobile(id):clickSeat(id));
       layer.appendChild(el);
     });
   });
-
   SEATS.forEach(([id])=>{
     const r=res[id];
     if(r){taken++;if(r.userId===CU.id){const{l,t}=seatPos[id];myPos={l,t};}}
     else avail++;
   });
-
   document.getElementById('s-total').textContent=TOTAL;
   document.getElementById('s-avail').textContent=avail;
   document.getElementById('s-taken').textContent=taken;
   document.getElementById('ms-total').textContent=TOTAL;
   document.getElementById('ms-avail').textContent=avail;
   document.getElementById('ms-taken').textContent=taken;
-
   ['mypin','mypin-mobile'].forEach(pinId=>{
-    const pin=document.getElementById(pinId);
-    if(!pin)return;
+    const pin=document.getElementById(pinId);if(!pin)return;
     if(myPos){pin.classList.remove('hidden');pin.style.left=(myPos.l-1)+'px';pin.style.top=(myPos.t-26)+'px';}
     else pin.classList.add('hidden');
-  });
-
-  ['fp','fp-mobile'].forEach(fpId=>{
-    const fp=document.getElementById(fpId);
-    if(fp&&!fp.style.backgroundImage){
-      fp.style.backgroundImage="url('https://i.imgur.com/dNX783P.png')";
-      fp.style.backgroundSize='contain';fp.style.backgroundRepeat='no-repeat';fp.style.backgroundPosition='center';
-    }
   });
 }
 
@@ -647,18 +638,16 @@ function clickSeat(id){
   document.getElementById(`btn-cancel-${id}`)?.addEventListener('click',()=>doCancel(id));
 }
 
-// 모바일 좌석 클릭 → 하단 시트
+// 모바일 좌석 클릭
 function clickSeatMobile(id){
   SEL=id;renderMap();
   const res=getRes(),r=res[id],ok=canBook();
-  const sheet=document.getElementById('bottom-sheet');
-  const overlay=document.getElementById('bs-overlay');
   let html='';
   if(r){
     if(r.userId===CU.id){
       html=`<div class="bs-num">${id}</div>
         <div class="bs-status" style="color:var(--gold)">● 내가 예약한 좌석</div>
-        <button class="bs-btn can" onclick="doCancel('${id}');closeSheet()">예약 반납</button>`;
+        <button class="bs-btn can" id="m-cancel-${id}">예약 반납</button>`;
     }else{
       html=`<div class="bs-num">${id}</div>
         <div class="bs-status" style="color:var(--red)">● 예약됨</div>
@@ -668,25 +657,27 @@ function clickSeatMobile(id){
   }else{
     html=`<div class="bs-num">${id}</div>
       <div class="bs-status" style="color:var(--green)">● 예약 가능</div>
-      <button class="bs-btn res" ${!ok?'disabled':''} onclick="doReserve('${id}');closeSheet()">${ok?'이 좌석 예약하기':'🔒 06:00 이후 예약 가능'}</button>`;
+      <button class="bs-btn res" id="m-reserve-${id}" ${!ok?'disabled':''}>${ok?'이 좌석 예약하기':'🔒 06:00 이후 예약 가능'}</button>`;
   }
   document.getElementById('bs-content').innerHTML=html;
-  sheet.classList.add('open');
-  overlay.classList.add('open');
+  document.getElementById(`m-reserve-${id}`)?.addEventListener('click',()=>{doReserve(id);closeSheet();});
+  document.getElementById(`m-cancel-${id}`)?.addEventListener('click',()=>{doCancel(id);closeSheet();});
+  document.getElementById('bottom-sheet').classList.add('open');
+  document.getElementById('bs-overlay').classList.add('open');
 }
 
 function closeSheet(){
-  document.getElementById('bottom-sheet').classList.remove('open');
-  document.getElementById('bs-overlay').classList.remove('open');
-  SEL=null;renderMap();
+  document.getElementById('bottom-sheet')?.classList.remove('open');
+  document.getElementById('bs-overlay')?.classList.remove('open');
+  SEL=null;
 }
 
+// 예약
 async function doReserve(id){
   if(!canBook()){showToast('⏰ 06:00 이후부터 예약 가능합니다');return;}
   const res=getRes();
   if(Object.values(res).some(r=>r.userId===CU.id)){showToast('오늘 이미 예약된 좌석이 있습니다');return;}
   if(res[id]){showToast('이미 예약된 좌석입니다');return;}
-  // 즉시 로컬 캐시에 반영
   _resCache[id]={userId:CU.id,userName:CU.name,reservedAt:''};
   renderMap();
   const today=new Date().toISOString().slice(0,10);
@@ -697,9 +688,9 @@ async function doReserve(id){
   if(!isMobile())clickSeat(id);
 }
 
+// 반납
 async function doCancel(id){
   const res=getRes();if(!res[id]||res[id].userId!==CU.id)return;
-  // 즉시 로컬 캐시에서 제거
   delete _resCache[id];
   renderMap();
   const today=new Date().toISOString().slice(0,10);
@@ -710,11 +701,12 @@ async function doCancel(id){
   if(!isMobile())document.getElementById('sbdet').innerHTML='<div class="det-empty"><div class="ico">✅</div>예약이 반납되었습니다</div>';
 }
 
+// 내 예약
 function renderMy(){
   const res=getRes(),mine=Object.entries(res).filter(([,r])=>r.userId===CU.id);
   const list=document.getElementById('mylist');
   const dateStr=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
-  if(!mine.length){list.innerHTML='<div class="empty-box"><div class="eico">🪑</div><p>오늘 예약된 좌석이 없습니다.<br>지도에서 좌석을 선택해 예약해보세요.</p></div>';return;}
+  if(!mine.length){list.innerHTML='<div class="empty-box"><div class="eico">🪑</div><p>오늘 예약된 좌석이 없습니다.</p></div>';return;}
   list.innerHTML=mine.map(([sid,r])=>`
     <div class="rc">
       <div class="rbadge">${sid}</div>
@@ -722,14 +714,14 @@ function renderMy(){
       <button class="rcb" data-my-cancel="${sid}">반납</button>
     </div>`).join('');
   list.querySelectorAll('[data-my-cancel]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const sid=btn.dataset.myCancel,res=getRes();delete res[sid];saveRes(res);
-      cancelFromSheet(new Date().toISOString().slice(0,10),sid);
-      showToast(`좌석 ${sid} 반납 완료`);renderMy();renderMap();
+    btn.addEventListener('click',async()=>{
+      const sid=btn.dataset.myCancel;
+      await doCancel(sid);renderMy();
     });
   });
 }
 
+// 관리자
 function renderAdmin(){
   const res=getRes(),taken=Object.keys(res).length,avail=TOTAL-taken;
   document.getElementById('ad-total').textContent=TOTAL;
@@ -746,9 +738,13 @@ function renderAdmin(){
       <td><span class="badge bg-green">사용중</span></td>
       <td><button data-admin-cancel="${sid}" style="background:none;border:1px solid var(--red);color:var(--red);border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;font-family:inherit">반납</button></td></tr>`).join('');
     tb.querySelectorAll('[data-admin-cancel]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const sid=btn.dataset.adminCancel,res=getRes();delete res[sid];saveRes(res);
-        cancelFromSheet(new Date().toISOString().slice(0,10),sid);
+      btn.addEventListener('click',async()=>{
+        const sid=btn.dataset.adminCancel;
+        if(!_resCache[sid])return;
+        delete _resCache[sid];
+        const today=new Date().toISOString().slice(0,10);
+        await cancelFromSheet(today,sid);
+        await loadFromSheet();
         showToast(`좌석 ${sid} 강제 반납`);renderAdmin();renderMap();
       });
     });
@@ -756,6 +752,20 @@ function renderAdmin(){
   renderUserList();
 }
 
+// 즉시 초기화
+async function adminReset(){
+  if(!confirm('모든 예약을 초기화하시겠습니까?'))return;
+  const today=new Date().toISOString().slice(0,10);
+  const res=getRes();
+  for(const sid of Object.keys(res)){
+    await cancelFromSheet(today,sid);
+  }
+  await loadFromSheet();
+  showToast('🔄 전체 예약 초기화 완료');
+  renderAdmin();renderMap();
+}
+
+// 직원 관리
 function addUser(){
   const name=document.getElementById('new-name').value.trim();
   const id=document.getElementById('new-id').value.trim().toLowerCase();
@@ -812,31 +822,28 @@ function renderUserList(){
   wrap.innerHTML='';wrap.appendChild(tbl);
 }
 
-function adminReset(){
-  if(!confirm('모든 예약을 초기화하시겠습니까?'))return;
-  localStorage.removeItem(SKEY());showToast('🔄 전체 예약 초기화 완료');renderAdmin();renderMap();
-}
-
+// 이벤트 등록
 window.addEventListener('load',async()=>{
   document.getElementById('tlock').classList.toggle('hidden',canBook());
-  document.getElementById('bs-overlay').addEventListener('click',closeSheet);
   document.getElementById('btn-login').addEventListener('click',doLogin);
   document.getElementById('btn-logout').addEventListener('click',doLogout);
   document.getElementById('nb-map').addEventListener('click',()=>goTab('map'));
   document.getElementById('nb-my').addEventListener('click',()=>goTab('my'));
   document.getElementById('nb-admin').addEventListener('click',()=>goTab('admin'));
+  document.getElementById('bnav-map').addEventListener('click',()=>goTabMobile('map'));
+  document.getElementById('bnav-my').addEventListener('click',()=>goTabMobile('my'));
+  document.getElementById('bnav-admin').addEventListener('click',()=>goTabMobile('admin'));
+  document.getElementById('bnav-logout').addEventListener('click',doLogout);
   document.getElementById('btn-reset').addEventListener('click',adminReset);
   document.getElementById('btn-add-user').addEventListener('click',addUser);
   document.getElementById('user-search').addEventListener('input',renderUserList);
+  document.getElementById('bs-overlay').addEventListener('click',closeSheet);
   document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('login').style.display!=='none')doLogin();});
 
+  // 자동 로그인
   const saved=getCU();
-  if(saved && saved.id){
-    CU=saved;
-    await enterApp();
-  } else {
-    document.getElementById('tlock').classList.toggle('hidden',canBook());
-  }
+  if(saved&&saved.id){CU=saved;await enterApp();}
+  else{document.getElementById('tlock').classList.toggle('hidden',canBook());}
 });
 </script>
 </body>
