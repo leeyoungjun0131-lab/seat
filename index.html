@@ -503,6 +503,7 @@ async function enterApp(){
   document.getElementById('ms-date').textContent=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
   document.getElementById('huser').innerHTML=`<strong>${CU.name}</strong>`;
   startClock();
+  setMapBg();
   checkMidnightReset();
   await loadFromSheet();
   renderMap();
@@ -595,10 +596,7 @@ function renderMap(){
 
   ['fp','fp-mobile'].forEach(fpId=>{
     const fp=document.getElementById(fpId);
-    if(fp&&!fp.style.backgroundImage){
-      fp.style.backgroundImage="url('https://i.imgur.com/dNX783P.png')";
-      fp.style.backgroundSize='contain';fp.style.backgroundRepeat='no-repeat';fp.style.backgroundPosition='center';
-    }
+    if(fp&&!fp.style.backgroundImage) setMapBg();
   });
 }
 
