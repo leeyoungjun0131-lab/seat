@@ -463,9 +463,7 @@ function checkMidnightReset(){
   const today = new Date().toISOString().slice(0,10);
   const lastDate = localStorage.getItem('pk_last_date');
   if(lastDate && lastDate !== today) {
-    // 날짜가 바뀌었으면 초기화
     localStorage.removeItem('pk_res_' + lastDate);
-    showToast('🔄 날짜가 바뀌어 예약이 초기화되었습니다');
   }
   localStorage.setItem('pk_last_date', today);
 }
