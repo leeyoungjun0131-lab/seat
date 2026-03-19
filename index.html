@@ -669,19 +669,21 @@ async function doReserve(id){
   const res=getRes();
   if(Object.values(res).some(r=>r.userId===CU.id)){showToast('오늘 이미 예약된 좌석이 있습니다');return;}
   if(res[id]){showToast('이미 예약된 좌석입니다');return;}
-  res[id]={userId:CU.id,userName:CU.name,reservedAt:new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})};
-  saveRes(res);
+  showToast('⏳ 예약 중...');
   const today=new Date().toISOString().slice(0,10);
-  appendToSheet(today,id,CU.name,CU.id+'@promega.com');
-  showToast(`✅ 좌석 ${id} 예약 완료!`);renderMap();
+  await appendToSheet(today,id,CU.name,CU.id+'@promega.com');
+  await loadFromSheet();
+  showToast(`✅ 좌석 ${id} 예약 완료!`);
+  renderMap();
   if(!isMobile())clickSeat(id);
 }
 
 async function doCancel(id){
   const res=getRes();if(!res[id]||res[id].userId!==CU.id)return;
-  delete res[id];saveRes(res);
+  showToast('⏳ 반납 중...');
   const today=new Date().toISOString().slice(0,10);
-  cancelFromSheet(today,id);
+  await cancelFromSheet(today,id);
+  await loadFromSheet();
   showToast(`좌석 ${id} 반납 완료`);
   SEL=null;renderMap();
   if(!isMobile())document.getElementById('sbdet').innerHTML='<div class="det-empty"><div class="ico">✅</div>예약이 반납되었습니다</div>';
