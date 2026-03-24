@@ -11,19 +11,28 @@
 html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:#f5f5f5;overflow:hidden}
 
 /* 대기 화면 */
-#welcome{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:opacity .4s;padding:40px}
+#welcome{position:fixed;inset:0;background:#f5f5f5;display:flex;flex-direction:column;cursor:pointer;z-index:10;transition:opacity .4s}
 #welcome.hide{opacity:0;pointer-events:none}
-.wc-logo-img{width:min(380px, 55vw);margin-bottom:40px}
-.wc-main{text-align:center;margin-bottom:48px}
-.wc-title{font-size:clamp(28px,4vw,56px);font-weight:900;color:var(--dark);line-height:1.2;margin-bottom:12px;white-space:nowrap}
-.wc-sub{font-size:clamp(14px,2vw,22px);color:rgba(0,0,0,0.5);font-weight:400}
-.wc-datetime{display:flex;align-items:center;gap:20px;margin-bottom:48px}
-.wc-datestr{font-size:clamp(14px,2vw,20px);font-weight:500;color:rgba(0,0,0,0.6)}
-.wc-time{font-size:clamp(28px,5vw,64px);font-weight:900;color:var(--dark);font-family:'DM Mono',monospace;line-height:1}
-.wc-divider{width:2px;height:48px;background:rgba(0,0,0,0.2)}
-.wc-hint{display:flex;align-items:center;gap:10px;color:rgba(0,0,0,0.4);font-size:clamp(12px,1.5vw,16px);animation:pulse 2s ease-in-out infinite}
-.wc-hint-icon{font-size:22px}
-@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}
+
+/* 상단 바 */
+.wc-topbar{height:72px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid #e8e8e8;flex-shrink:0}
+.wc-topbar-logo{height:36px}
+.wc-topbar-right{display:flex;align-items:center;gap:16px;font-size:18px;font-weight:600;color:#333;font-family:'Noto Sans KR',sans-serif}
+.wc-topbar-date{color:#555}
+.wc-topbar-time{background:var(--gold);color:var(--dark);font-weight:900;padding:6px 16px;border-radius:8px;font-size:20px}
+
+/* 메인 콘텐츠 */
+.wc-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px}
+.wc-center-logo{height:80px;margin-bottom:32px}
+.wc-sub{font-size:18px;color:#888;margin-bottom:60px}
+.wc-title{font-size:clamp(32px,4vw,52px);font-weight:900;color:#1a1a1a;text-align:center;margin-bottom:16px}
+
+/* 하단 힌트 */
+.wc-footer{height:80px;background:#2a2a2a;display:flex;align-items:center;justify-content:center;gap:14px;flex-shrink:0}
+.wc-hint-icon{font-size:28px}
+.wc-hint-text{color:#fff;font-size:16px;font-weight:500}
+.wc-hint-text strong{color:var(--gold)}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
 
 /* 현황 화면 */
 #display{position:fixed;inset:0;background:#E8E5DE;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .4s}
@@ -80,19 +89,21 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:#f5f5f5;o
 
 <!-- 대기 화면 -->
 <div id="welcome">
-  <img class="wc-logo-img" src="https://i.imgur.com/IcTYlj2.png" id="wc-logo-img" alt="Promega">
-  <div class="wc-datetime">
-    <div class="wc-datestr" id="wc-datestr"></div>
-    <div class="wc-divider"></div>
-    <div class="wc-time" id="wc-time"></div>
+  <div class="wc-topbar">
+    <img class="wc-topbar-logo" src="https://i.imgur.com/IcTYlj2.png" alt="Promega">
+    <div class="wc-topbar-right">
+      <span class="wc-topbar-date" id="wc-datestr"></span>
+      <span class="wc-topbar-time" id="wc-time"></span>
+    </div>
   </div>
-  <div class="wc-main">
-    <div class="wc-title" id="wc-title">Welcome to Promega Korea</div>
-    <div class="wc-sub" id="wc-sub">Promega Korea &amp; Biosystems</div>
+  <div class="wc-body">
+    <img class="wc-center-logo" src="https://i.imgur.com/IcTYlj2.png" alt="Promega">
+    <div class="wc-title" id="wc-title">Welcome to Promega Korea & Biosystems</div>
+    <div class="wc-sub" id="wc-sub">Promega Korea & Biosystems</div>
   </div>
-  <div class="wc-hint">
-    <span class="wc-hint-icon">👆</span>
-    <span>화면을 클릭하면 좌석 현황을 확인할 수 있습니다</span>
+  <div class="wc-footer">
+    <span class="wc-hint-icon" style="animation:pulse 2s ease-in-out infinite">👆</span>
+    <span class="wc-hint-text">좌석 현황을 확인하려면 <strong>화면을 클릭</strong>해주세요</span>
   </div>
 </div>
 
