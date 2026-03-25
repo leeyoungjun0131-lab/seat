@@ -408,16 +408,14 @@ SEATS.forEach(([id,l,t,w,h])=>{seatPos[id]={l,t,w,h};});
 async function appendToSheet(date,seatId,userName,userId){
   try{
     const p=new URLSearchParams({action:'reserve',date,seatId,userName,userId});
-    const resp=await fetch(SHEET_URL+'?'+p.toString());
-    return await resp.json();
-  }catch(e){console.error(e);return null;}
+    await fetch(SHEET_URL+'?'+p.toString());
+  }catch(e){console.error(e);}
 }
 async function cancelFromSheet(date,seatId){
   try{
     const p=new URLSearchParams({action:'cancel',date,seatId});
-    const resp=await fetch(SHEET_URL+'?'+p.toString());
-    return await resp.json();
-  }catch(e){console.error(e);return null;}
+    await fetch(SHEET_URL+'?'+p.toString());
+  }catch(e){console.error(e);}
 }
 async function loadFromSheet(){
   try{
@@ -662,7 +660,7 @@ function clickSeatMobile(id){
   }else{
     html=`<div class="bs-num">${id}</div>
       <div class="bs-status" style="color:var(--green)">● 예약 가능</div>
-      <button class="bs-btn res" id="m-reserve-${id}" ${!ok?'disabled':''}>${ok?'이 좌석 예약하기':'🔒 06:50 이후 예약 가능'}</button>`;
+      <button class="bs-btn res" id="m-reserve-${id}" ${!ok?'disabled':''}>${ok?'이 좌석 예약하기':'🔒 06:00 이후 예약 가능'}</button>`;
   }
   document.getElementById('bs-content').innerHTML=html;
   document.getElementById(`m-reserve-${id}`)?.addEventListener('click',()=>{doReserve(id);closeSheet();});
