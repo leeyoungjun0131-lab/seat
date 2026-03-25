@@ -356,7 +356,7 @@ const SEATS=[
   ['036',813,145,28,20],['037',814,167,28,20],['038',813,216,28,20],
 ];
 const TOTAL=SEATS.length;
-const SHEET_URL='https://script.google.com/macros/s/AKfycbyQJFsIReT4DnRSZQ8T2KFhW9ict4FBrXK0v-fpVwGs5mFNTeMQT6APq2eXrxC6WZla/exec';
+const SHEET_URL='https://script.google.com/macros/s/AKfycbxO0CYsKV0IQETwea8zLX-Y7wcNJ9bHn3LgN6xv51bHz5rxbY6k5U1wsTwws6kxmY_O5Q/exec';
 const MAP_IMG="url('https://i.imgur.com/dNX783P.png')";
 
 const DEFAULT_USERS={
@@ -385,8 +385,7 @@ const DEFAULT_USERS={
   'kyunghyun.pyun':{name:'편경현',isAdmin:false},'yoo.huh':{name:'허유',isAdmin:false},
   'sungmoo.hong':{name:'홍승무',isAdmin:false},'juntae.hwang':{name:'황준태',isAdmin:false},
   'jiwon.hwang':{name:'황지원',isAdmin:false},
-  'admin':{name:'admin',isAdmin:true},
-};
+  'admin':{name:'admin',isAdmin:true},};
 
 // Storage
 const getUsers=()=>{try{const s=localStorage.getItem('pk_users');return s?JSON.parse(s):{...DEFAULT_USERS};}catch{return{...DEFAULT_USERS};}};
