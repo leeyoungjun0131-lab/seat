@@ -408,14 +408,16 @@ SEATS.forEach(([id,l,t,w,h])=>{seatPos[id]={l,t,w,h};});
 async function appendToSheet(date,seatId,userName,userId){
   try{
     const p=new URLSearchParams({action:'reserve',date,seatId,userName,userId});
-    await fetch(SHEET_URL+'?'+p.toString());
-  }catch(e){console.error(e);}
+    const resp=await fetch(SHEET_URL+'?'+p.toString());
+    return await resp.json();
+  }catch(e){console.error(e);return null;}
 }
 async function cancelFromSheet(date,seatId){
   try{
     const p=new URLSearchParams({action:'cancel',date,seatId});
-    await fetch(SHEET_URL+'?'+p.toString());
-  }catch(e){console.error(e);}
+    const resp=await fetch(SHEET_URL+'?'+p.toString());
+    return await resp.json();
+  }catch(e){console.error(e);return null;}
 }
 async function loadFromSheet(){
   try{
