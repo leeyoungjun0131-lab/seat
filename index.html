@@ -580,6 +580,7 @@ function goTabMobile(t){
 
 // 맵 렌더링
 function renderMap(){
+  if(!CU) return;
   const res=getRes();
   let avail=0,taken=0,myPos=null;
   ['slayer','slayer-mobile'].forEach(layerId=>{
