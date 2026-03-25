@@ -11,6 +11,8 @@
 html,body{height:100%;font-family:'Noto Sans KR',sans-serif}
 body{background:#E8E5DE;color:var(--text)}
 .hidden{display:none!important}
+
+/* 로그인 */
 #login{min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .lg-glow{position:absolute;border-radius:50%;pointer-events:none}
 .lg-glow.a{width:700px;height:700px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(253,184,19,0.09) 0%,transparent 65%)}
@@ -33,6 +35,8 @@ body{background:#E8E5DE;color:var(--text)}
 .lg-policy .hl{color:var(--gold);font-weight:700}
 .tlock{background:rgba(214,48,48,0.1);border:1px solid rgba(214,48,48,0.28);border-radius:10px;padding:12px 16px;text-align:center;color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:14px;line-height:1.7}
 .tlock strong{color:#FF8A80;font-size:14px}
+
+/* 앱 */
 #app{display:none;flex-direction:column;height:100vh;overflow:hidden}
 .hdr{height:54px;background:var(--dark);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(253,184,19,0.1);z-index:50}
 .hdr-l{display:flex;align-items:center;gap:18px}
@@ -42,7 +46,6 @@ body{background:#E8E5DE;color:var(--text)}
 .nav{display:flex;gap:2px}
 .nb{background:none;border:none;color:rgba(255,255,255,0.35);font-size:12px;font-weight:500;padding:5px 12px;border-radius:7px;cursor:pointer;font-family:inherit}
 .nb.active{background:rgba(253,184,19,0.12);color:var(--gold)}
-.nb:hover:not(.active){color:rgba(255,255,255,0.6)}
 .hdr-r{display:flex;align-items:center;gap:12px}
 .clock{color:rgba(255,255,255,0.3);font-size:11px;font-family:'DM Mono',monospace}
 .bstatus{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px}
@@ -52,9 +55,13 @@ body{background:#E8E5DE;color:var(--text)}
 .hdr-user strong{color:#fff}
 .lo-btn{background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit}
 .lo-btn:hover{border-color:var(--red);color:#FF8A80}
+
+/* 패널 */
 .panel{display:none;flex:1;overflow:hidden;flex-direction:column}
 .panel.active{display:flex}
-#map-panel{flex-direction:row;position:relative}
+#map-panel{flex-direction:row}
+
+/* 사이드바 */
 .sidebar{width:268px;flex-shrink:0;background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sb-hd{padding:15px 17px 11px;border-bottom:1px solid var(--border)}
 .sb-title{font-size:13px;font-weight:700}
@@ -80,19 +87,23 @@ body{background:#E8E5DE;color:var(--text)}
 .abt.res{background:var(--gold);color:var(--dark)}
 .abt.can{background:#FEE2E2;color:var(--red)}
 .abt:disabled{opacity:.35;cursor:not-allowed}
-.map-area{flex:1;overflow:auto;background:#C8C4BC;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px}
+
+/* 맵 */
+.map-area{flex:1;overflow:auto;background:#C8C4BC;padding:16px}
 .fp{position:relative;width:850px;height:547px;flex-shrink:0;background:#E8E4DC;border-radius:6px;box-shadow:0 12px 48px rgba(0,0,0,0.22);overflow:hidden;background-size:contain;background-repeat:no-repeat;background-position:center}
 .fp-border{position:absolute;inset:0;border:3px solid rgba(90,85,80,0.4);border-radius:6px;z-index:3;pointer-events:none}
-.seat{position:absolute;z-index:10;border-radius:3px;border:1.5px solid transparent;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;font-family:'DM Mono',monospace;user-select:none;overflow:hidden;word-break:break-all;text-align:center;line-height:1.1}
+.seat{position:absolute;z-index:10;border-radius:3px;border:1.5px solid transparent;cursor:pointer;transition:transform .12s,box-shadow .12s;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;font-family:'DM Mono',monospace;user-select:none;overflow:hidden;text-align:center;line-height:1.1}
 .seat.avail{background:rgba(46,165,90,0.82);border-color:#1A7A40;color:rgba(255,255,255,0.95)}
 .seat.taken{background:rgba(214,48,48,0.88);border-color:#A01818;color:rgba(255,255,255,0.92)}
 .seat.mine{background:var(--gold);border-color:#B07800;color:var(--dark)}
 .seat:hover{transform:scale(1.4);z-index:20;box-shadow:0 3px 12px rgba(0,0,0,0.3)}
-.seat.sel{transform:scale(1.45);z-index:30;box-shadow:0 0 0 3px rgba(253,184,19,0.65),0 4px 16px rgba(0,0,0,0.3)}
+.seat.sel{transform:scale(1.45);z-index:30;box-shadow:0 0 0 3px rgba(253,184,19,0.65)}
 .pin{position:absolute;z-index:40;pointer-events:none;animation:pb 2s ease-in-out infinite}
 .pin-body{width:20px;height:20px;background:var(--gold);border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(253,184,19,0.6)}
 .pin-body::after{content:'★';display:block;transform:rotate(45deg);font-size:9px;color:var(--dark);text-align:center;line-height:20px}
 @keyframes pb{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* 모바일 맵 */
 #mobile-map-panel{display:none;flex-direction:column;flex:1;overflow:hidden;position:relative}
 .mobile-stat-bar{height:44px;background:var(--white);display:flex;align-items:center;justify-content:space-around;border-bottom:1px solid var(--border);flex-shrink:0}
 .mobile-stat-item{text-align:center}
@@ -111,10 +122,14 @@ body{background:#E8E5DE;color:var(--text)}
 .bs-btn:disabled{opacity:.35}
 .bs-overlay{position:absolute;inset:0;z-index:99;display:none}
 .bs-overlay.open{display:block}
+
+/* 하단 네비 */
 .bottom-nav{height:56px;background:var(--dark);display:flex;align-items:center;justify-content:space-around;flex-shrink:0;border-top:1px solid rgba(255,255,255,0.05)}
-.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(255,255,255,0.35);font-size:9px;cursor:pointer;padding:6px 16px;border-radius:8px;-webkit-tap-highlight-color:transparent}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(255,255,255,0.35);font-size:9px;cursor:pointer;padding:6px 16px;border-radius:8px;-webkit-tap-highlight-color:transparent;user-select:none}
 .bnav-item.active{color:var(--gold)}
 .bnav-icon{font-size:20px}
+
+/* 내 예약 */
 #my-panel{overflow-y:auto;padding:28px}
 .pi{max-width:700px;margin:0 auto;width:100%}
 .ph{font-size:20px;font-weight:900}
@@ -123,10 +138,11 @@ body{background:#E8E5DE;color:var(--text)}
 .rbadge{width:50px;height:50px;flex-shrink:0;background:var(--gold-dim);border:2px solid var(--gold);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;font-family:'DM Mono',monospace}
 .ri{flex:1}.rdt{font-size:13px;font-weight:700}.rtm{font-size:11px;color:var(--muted);margin-top:2px}
 .rcb{background:none;border:1px solid #E0E0E0;color:var(--muted);padding:6px 13px;border-radius:7px;font-size:12px;cursor:pointer;font-family:inherit}
-.rcb:hover{border-color:var(--red);color:var(--red)}
 .empty-box{text-align:center;padding:52px 20px;color:var(--muted)}
 .empty-box .eico{font-size:42px;margin-bottom:10px}
 .empty-box p{font-size:13px;line-height:1.8}
+
+/* 관리자 */
 #admin-panel{overflow-y:auto;padding:28px}
 .ai{max-width:900px;margin:0 auto;width:100%}
 .acards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
@@ -148,15 +164,14 @@ td{padding:11px 18px;font-size:12px;border-bottom:1px solid var(--border)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--surface)}
 .mono{font-family:'DM Mono',monospace;font-size:11px}
+
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--dark);color:#fff;padding:10px 20px;border-radius:40px;font-size:12px;font-weight:500;z-index:9999;border:1px solid rgba(253,184,19,0.22);box-shadow:0 8px 32px rgba(0,0,0,0.28);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:2px}
+
 @media(max-width:768px){
-  .hdr .nav{display:none}
-  .hdr .lo-btn{display:none}
-  .hdr .clock{display:none}
-  .hdr .bstatus{display:none}
+  .hdr .nav,.hdr .lo-btn,.hdr .clock,.hdr .bstatus{display:none}
   #map-panel{display:none!important}
   #mobile-map-panel{display:flex!important}
   .bottom-nav{display:flex!important}
@@ -171,6 +186,7 @@ tr:hover td{background:var(--surface)}
 </style>
 </head>
 <body>
+
 <div id="login">
   <div class="lg-glow a"></div><div class="lg-glow b"></div>
   <div class="lg-card">
@@ -182,7 +198,7 @@ tr:hover td{background:var(--surface)}
     <div class="lg-sub">이메일 아이디와 이름으로 로그인하세요</div>
     <div class="tlock hidden" id="tlock">
       <strong>🔒 예약 가능 시간이 아닙니다</strong><br>
-      오전 06:50 이후부터 예약할 수 있습니다 · <span id="lock-time">--:--</span>
+      오전 06:50 이후부터 예약할 수 있습니다
     </div>
     <div class="f-group">
       <label class="f-label">이메일 아이디</label>
@@ -220,6 +236,7 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
+  <!-- 데스크탑 맵 -->
   <div class="panel active" id="map-panel">
     <div class="sidebar">
       <div class="sb-hd"><div class="sb-title">오늘의 좌석 현황</div><div class="sb-date" id="sbdate"></div></div>
@@ -252,6 +269,7 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
+  <!-- 모바일 맵 -->
   <div id="mobile-map-panel">
     <div class="mobile-stat-bar">
       <div class="mobile-stat-item"><div class="mobile-stat-n" style="color:var(--gold)" id="ms-total">-</div><div class="mobile-stat-l">전체</div></div>
@@ -273,6 +291,7 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
+  <!-- 내 예약 -->
   <div class="panel" id="my-panel">
     <div class="pi">
       <div class="ph">내 예약 현황</div>
@@ -281,6 +300,7 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
+  <!-- 관리자 -->
   <div class="panel" id="admin-panel">
     <div class="ai">
       <div class="ph">관리자 현황판</div>
@@ -306,7 +326,7 @@ tr:hover td{background:var(--surface)}
         <div style="padding:14px 18px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <input id="new-name" type="text" placeholder="이름" style="flex:1;min-width:80px;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;font-family:inherit;outline:none">
           <input id="new-id" type="text" placeholder="이메일ID" style="flex:2;min-width:120px;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;font-family:inherit;outline:none">
-          <button id="btn-add-user" style="background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">+ 추가</button>
+          <button id="btn-add-user" style="background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">+ 추가</button>
         </div>
         <div style="padding:10px 18px;border-bottom:1px solid var(--border)">
           <input id="user-search" type="text" placeholder="🔍 이름 또는 이메일ID 검색" style="width:100%;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;font-family:inherit;outline:none">
@@ -316,19 +336,12 @@ tr:hover td{background:var(--surface)}
     </div>
   </div>
 
+  <!-- 하단 네비 -->
   <div class="bottom-nav" style="display:none">
-    <div class="bnav-item active" id="bnav-map">
-      <div class="bnav-icon">🗺</div><div>좌석지도</div>
-    </div>
-    <div class="bnav-item" id="bnav-my">
-      <div class="bnav-icon">📋</div><div>내 예약</div>
-    </div>
-    <div class="bnav-item hidden" id="bnav-admin">
-      <div class="bnav-icon">⚙️</div><div>관리자</div>
-    </div>
-    <div class="bnav-item" id="bnav-logout">
-      <div class="bnav-icon">🚪</div><div>로그아웃</div>
-    </div>
+    <div class="bnav-item active" id="bnav-map"><div class="bnav-icon">🗺</div><div>좌석지도</div></div>
+    <div class="bnav-item" id="bnav-my"><div class="bnav-icon">📋</div><div>내 예약</div></div>
+    <div class="bnav-item hidden" id="bnav-admin"><div class="bnav-icon">⚙️</div><div>관리자</div></div>
+    <div class="bnav-item" id="bnav-logout"><div class="bnav-icon">🚪</div><div>로그아웃</div></div>
   </div>
 </div>
 
@@ -385,7 +398,8 @@ const DEFAULT_USERS={
   'kyunghyun.pyun':{name:'편경현',isAdmin:false},'yoo.huh':{name:'허유',isAdmin:false},
   'sungmoo.hong':{name:'홍승무',isAdmin:false},'juntae.hwang':{name:'황준태',isAdmin:false},
   'jiwon.hwang':{name:'황지원',isAdmin:false},
-  'admin':{name:'admin',isAdmin:true},};
+  'admin':{name:'admin',isAdmin:true},
+};
 
 // Storage
 const getUsers=()=>{try{const s=localStorage.getItem('pk_users');return s?JSON.parse(s):{...DEFAULT_USERS};}catch{return{...DEFAULT_USERS};}};
@@ -394,86 +408,78 @@ const getCU=()=>{try{const s=localStorage.getItem('pk_cu');return s?JSON.parse(s
 const saveCU=d=>localStorage.setItem('pk_cu',JSON.stringify(d));
 const clearCU=()=>localStorage.removeItem('pk_cu');
 
-// 메모리 캐시 (Sheets 기준)
-let _resCache={};
-const getRes=()=>_resCache;
-
+// 한국 시간 기준 오늘 날짜
 const getToday=()=>{
   const now=new Date();
   const kst=new Date(now.getTime()+9*60*60*1000);
   return kst.toISOString().slice(0,10);
 };
+
+// 메모리 캐시
+let _resCache={};
+const getRes=()=>_resCache;
+
+let CU=null,SEL=null,clockTimer=null,syncTimer=null;
 const seatPos={};
 const isMobile=()=>window.innerWidth<=768;
 const canBook=()=>{const h=new Date().getHours(),m=new Date().getMinutes();return h>6||(h===6&&m>=50);};
 SEATS.forEach(([id,l,t,w,h])=>{seatPos[id]={l,t,w,h};});
 
-// Sheet 함수
-async function appendToSheet(date,seatId,userName,userId){
+// Sheet
+async function sheetCall(params){
   try{
-    const p=new URLSearchParams({action:'reserve',date,seatId,userName,userId});
+    const p=new URLSearchParams(params);
     const resp=await fetch(SHEET_URL+'?'+p.toString());
     return await resp.json();
-  }catch(e){console.error(e);return null;}
+  }catch(e){console.error('Sheet error',e);return null;}
 }
-async function cancelFromSheet(date,seatId){
-  try{
-    const p=new URLSearchParams({action:'cancel',date,seatId});
-    const resp=await fetch(SHEET_URL+'?'+p.toString());
-    return await resp.json();
-  }catch(e){console.error(e);return null;}
-}
+
 async function loadFromSheet(){
-  try{
-    const resp=await fetch(SHEET_URL+'?t='+Date.now());
-    const data=await resp.json();
-    _resCache={};
-    Object.entries(data).forEach(([sid,r])=>{
-      _resCache[sid]={userId:r.userId,userName:r.userName,reservedAt:''};
-    });
-    return true;
-  }catch(e){console.error(e);return false;}
+  const data=await sheetCall({t:Date.now()});
+  if(!data) return;
+  _resCache={};
+  Object.entries(data).forEach(([sid,r])=>{
+    _resCache[sid]={userId:r.userId,userName:r.userName};
+  });
 }
 
 // Toast
+let toastTimer=null;
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.classList.add('show');
-  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
 }
 function hideToast(){
-  const t=document.getElementById('toast');
-  t.classList.remove('show');
-  clearTimeout(tt);
+  document.getElementById('toast').classList.remove('show');
+  clearTimeout(toastTimer);
 }
 
-// 자정 초기화 체크
+// 자정 체크
 function checkMidnightReset(){
-  const now=new Date();
-  const today=now.toISOString().slice(0,10);
-  const lastDate=localStorage.getItem('pk_last_date');
-  if(lastDate&&lastDate!==today){
-    _resCache={};
-  }
+  const today=getToday();
+  const last=localStorage.getItem('pk_last_date');
+  if(last&&last!==today) _resCache={};
   localStorage.setItem('pk_last_date',today);
 }
 
 // 시계
 function startClock(){
+  if(clockTimer) clearInterval(clockTimer);
   const tick=()=>{
     const n=new Date();
     document.getElementById('hclock').textContent=n.toLocaleTimeString('ko-KR');
     const ok=canBook();
     const bs=document.getElementById('bstatus');
-    bs.textContent=ok?'예약 가능':'예약 불가';bs.className='bstatus '+(ok?'ok':'no');
-    const lt=document.getElementById('lock-time');if(lt)lt.textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+    bs.textContent=ok?'예약 가능':'예약 불가';
+    bs.className='bstatus '+(ok?'ok':'no');
   };
-  tick();setInterval(tick,1000);
-  setInterval(async()=>{await loadFromSheet();renderMap();},30000);
-  setInterval(checkMidnightReset,60000);
+  tick();clockTimer=setInterval(tick,1000);
+  if(syncTimer) clearInterval(syncTimer);
+  syncTimer=setInterval(async()=>{await loadFromSheet();renderMap();},30000);
 }
 
-// 도면 배경 적용
+// 도면
 function applyMapBg(){
   ['fp','fp-mobile'].forEach(id=>{
     const el=document.getElementById(id);
@@ -495,63 +501,50 @@ function doLogin(){
 async function enterApp(){
   document.getElementById('login').style.display='none';
   document.getElementById('app').style.display='flex';
-
-  // 관리자 탭 초기화
   document.getElementById('nb-admin').classList.add('hidden');
   document.getElementById('bnav-admin').classList.add('hidden');
   if(CU.isAdmin){
     document.getElementById('nb-admin').classList.remove('hidden');
     document.getElementById('bnav-admin').classList.remove('hidden');
   }
-
   const dateStr=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
   document.getElementById('sbdate').textContent=dateStr;
   document.getElementById('ms-date').textContent=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
   document.getElementById('huser').innerHTML=`<strong>${CU.name}</strong>`;
-
   applyMapBg();
   startClock();
   checkMidnightReset();
-
-  // Sheets 로드 후 반드시 renderMap 호출
-  try {
-    await loadFromSheet();
-  } catch(e) {
-    console.error(e);
-  } finally {
-    renderMap();
-  }
+  await loadFromSheet();
+  renderMap();
 }
 
 // 로그아웃
 function doLogout(){
   CU=null;SEL=null;
-  clearCU();
   _resCache={};
+  clearCU();
   hideToast();
+  if(clockTimer){clearInterval(clockTimer);clockTimer=null;}
+  if(syncTimer){clearInterval(syncTimer);syncTimer=null;}
   closeSheet();
-  // 관리자 탭 숨김
   document.getElementById('nb-admin').classList.add('hidden');
   document.getElementById('bnav-admin').classList.add('hidden');
-  // 탭 초기화
-  ['map','my','admin'].forEach(x=>{
-    document.getElementById(x+'-panel')?.classList.remove('active');
-    document.getElementById('nb-'+x)?.classList.remove('active');
-  });
   document.getElementById('map-panel').classList.add('active');
   document.getElementById('nb-map').classList.add('active');
-  document.getElementById('mobile-map-panel').style.display='';
-  ['bnav-map','bnav-my','bnav-admin'].forEach(x=>{
-    document.getElementById(x)?.classList.remove('active');
+  ['my','admin'].forEach(x=>{
+    document.getElementById(x+'-panel').classList.remove('active');
+    document.getElementById('nb-'+x)?.classList.remove('active');
   });
   document.getElementById('bnav-map').classList.add('active');
+  ['bnav-my','bnav-admin'].forEach(x=>document.getElementById(x)?.classList.remove('active'));
   document.getElementById('app').style.display='none';
   document.getElementById('login').style.display='flex';
   document.getElementById('inp-id').value='';
   document.getElementById('inp-name').value='';
+  document.getElementById('tlock').classList.toggle('hidden',canBook());
 }
 
-// 탭 전환 (데스크탑)
+// 탭
 function goTab(t){
   ['map','my','admin'].forEach(x=>{
     document.getElementById(x+'-panel').classList.remove('active');
@@ -564,17 +557,14 @@ function goTab(t){
   if(t==='admin')renderAdmin();
 }
 
-// 탭 전환 (모바일)
 function goTabMobile(t){
-  ['map','my','admin'].forEach(x=>{
-    document.getElementById(x+'-panel')?.classList.remove('active');
+  ['my','admin'].forEach(x=>{
+    document.getElementById(x+'-panel').classList.remove('active');
     document.getElementById('bnav-'+x)?.classList.remove('active');
   });
   document.getElementById('bnav-'+t)?.classList.add('active');
   if(t==='map'){
     document.getElementById('mobile-map-panel').style.display='flex';
-    document.getElementById('my-panel').classList.remove('active');
-    document.getElementById('admin-panel').classList.remove('active');
     renderMap();
   } else {
     document.getElementById('mobile-map-panel').style.display='none';
@@ -586,7 +576,7 @@ function goTabMobile(t){
 
 // 맵 렌더링
 function renderMap(){
-  if(!CU) return;
+  if(!CU)return;
   const res=getRes();
   let avail=0,taken=0,myPos=null;
   ['slayer','slayer-mobile'].forEach(layerId=>{
@@ -594,21 +584,20 @@ function renderMap(){
     if(!layer)return;
     const mobile=layerId==='slayer-mobile';
     layer.innerHTML='';
-    SEATS.forEach(([id])=>{
-      const{l,t,w,h}=seatPos[id],r=res[id];let cls='avail';
-      if(r)cls=r.userId===CU.id?'mine':'taken';
+    SEATS.forEach(([id,l,t,w,h])=>{
+      const r=res[id];
+      const cls=r?(r.userId===CU.id?'mine':'taken'):'avail';
       const el=document.createElement('div');
       el.className=`seat ${cls}${SEL===id?' sel':''}`;
       el.style.cssText=`left:${l}px;top:${t}px;width:${w}px;height:${h}px`;
-      el.dataset.id=id;
       el.textContent=r?r.userName.slice(0,3):id;
       el.addEventListener('click',()=>mobile?clickSeatMobile(id):clickSeat(id));
       layer.appendChild(el);
     });
   });
-  SEATS.forEach(([id])=>{
+  SEATS.forEach(([id,l,t])=>{
     const r=res[id];
-    if(r){taken++;if(r.userId===CU.id){const{l,t}=seatPos[id];myPos={l,t};}}
+    if(r){taken++;if(r.userId===CU.id)myPos={l,t};}
     else avail++;
   });
   document.getElementById('s-total').textContent=TOTAL;
@@ -618,7 +607,8 @@ function renderMap(){
   document.getElementById('ms-avail').textContent=avail;
   document.getElementById('ms-taken').textContent=taken;
   ['mypin','mypin-mobile'].forEach(pinId=>{
-    const pin=document.getElementById(pinId);if(!pin)return;
+    const pin=document.getElementById(pinId);
+    if(!pin)return;
     if(myPos){pin.classList.remove('hidden');pin.style.left=(myPos.l-1)+'px';pin.style.top=(myPos.t-26)+'px';}
     else pin.classList.add('hidden');
   });
@@ -627,7 +617,8 @@ function renderMap(){
 // 데스크탑 좌석 클릭
 function clickSeat(id){
   SEL=id;renderMap();
-  const res=getRes(),r=res[id],ok=canBook();let sH,bH;
+  const res=getRes(),r=res[id],ok=canBook();
+  let sH,bH;
   if(r){
     if(r.userId===CU.id){
       sH=`<div class="det-status" style="color:var(--gold)">● 내가 예약한 좌석</div>`;
@@ -638,7 +629,7 @@ function clickSeat(id){
     }
   }else{
     sH=`<div class="det-status" style="color:var(--green)">● 예약 가능</div>`;
-    bH=`<button class="abt res" id="btn-reserve-${id}" ${!ok?'disabled':''}>${ok?'이 좌석 예약하기':'🔒 06:00 이후 예약 가능'}</button>`;
+    bH=`<button class="abt res" id="btn-reserve-${id}" ${!ok?'disabled':''}>${ok?'이 좌석 예약하기':'🔒 06:50 이후 예약 가능'}</button>`;
   }
   document.getElementById('sbdet').innerHTML=`
     <div class="det-card"><div class="det-num">${id}</div>${sH}</div>
@@ -683,27 +674,36 @@ function closeSheet(){
 
 // 예약
 async function doReserve(id){
-  if(!canBook()){showToast('⏰ 06:00 이후부터 예약 가능합니다');return;}
+  if(!CU){showToast('로그인이 필요합니다');return;}
+  if(!canBook()){showToast('⏰ 06:50 이후부터 예약 가능합니다');return;}
   const res=getRes();
   if(Object.values(res).some(r=>r.userId===CU.id)){showToast('오늘 이미 예약된 좌석이 있습니다');return;}
   if(res[id]){showToast('이미 예약된 좌석입니다');return;}
-  _resCache[id]={userId:CU.id,userName:CU.name,reservedAt:''};
+  _resCache[id]={userId:CU.id,userName:CU.name};
   renderMap();
-  const today=new Date().toISOString().slice(0,10);
-  await appendToSheet(today,id,CU.name,CU.id+'@promega.com');
-  await loadFromSheet();
-  showToast(`✅ 좌석 ${id} 예약 완료!`);
-  renderMap();
-  if(!isMobile())clickSeat(id);
+  showToast('⏳ 예약 중...');
+  const result=await sheetCall({action:'reserve',seatId:id,userName:CU.name,userId:CU.id+'@promega.com'});
+  if(result&&result.result==='OK'){
+    await loadFromSheet();
+    showToast(`✅ 좌석 ${id} 예약 완료!`);
+    renderMap();
+    if(!isMobile())clickSeat(id);
+  }else{
+    delete _resCache[id];
+    renderMap();
+    showToast('⚠️ 예약 중 오류가 발생했습니다');
+  }
 }
 
 // 반납
 async function doCancel(id){
-  const res=getRes();if(!res[id]||res[id].userId!==CU.id)return;
+  if(!CU)return;
+  const res=getRes();
+  if(!res[id]||res[id].userId!==CU.id)return;
   delete _resCache[id];
   renderMap();
-  const today=new Date().toISOString().slice(0,10);
-  await cancelFromSheet(today,id);
+  showToast('⏳ 반납 중...');
+  const result=await sheetCall({action:'cancel',date:getToday(),seatId:id});
   await loadFromSheet();
   showToast(`좌석 ${id} 반납 완료`);
   SEL=null;renderMap();
@@ -712,6 +712,7 @@ async function doCancel(id){
 
 // 내 예약
 function renderMy(){
+  if(!CU)return;
   const res=getRes(),mine=Object.entries(res).filter(([,r])=>r.userId===CU.id);
   const list=document.getElementById('mylist');
   const dateStr=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
@@ -723,15 +724,13 @@ function renderMy(){
       <button class="rcb" data-my-cancel="${sid}">반납</button>
     </div>`).join('');
   list.querySelectorAll('[data-my-cancel]').forEach(btn=>{
-    btn.addEventListener('click',async()=>{
-      const sid=btn.dataset.myCancel;
-      await doCancel(sid);renderMy();
-    });
+    btn.addEventListener('click',async()=>{await doCancel(btn.dataset.myCancel);renderMy();});
   });
 }
 
 // 관리자
 function renderAdmin(){
+  if(!CU)return;
   const res=getRes(),taken=Object.keys(res).length,avail=TOTAL-taken;
   document.getElementById('ad-total').textContent=TOTAL;
   document.getElementById('ad-taken').textContent=taken;
@@ -749,23 +748,22 @@ function renderAdmin(){
     tb.querySelectorAll('[data-admin-cancel]').forEach(btn=>{
       btn.addEventListener('click',async()=>{
         const sid=btn.dataset.adminCancel;
-        if(!_resCache[sid])return;
         delete _resCache[sid];
-        await cancelFromSheet(getToday(),sid);
+        await sheetCall({action:'cancel',date:getToday(),seatId:sid});
         await loadFromSheet();
-        showToast(`좌석 ${sid} 강제 반납`);renderAdmin();renderMap();
+        showToast(`좌석 ${sid} 강제 반납`);
+        renderAdmin();renderMap();
       });
     });
   }
   renderUserList();
 }
 
+// 즉시 초기화
 async function adminReset(){
   if(!confirm('오늘 예약 현황을 초기화하시겠습니까?'))return;
   showToast('⏳ 초기화 중...');
-  const p=new URLSearchParams({action:'resetToday',date:getToday()});
-  await fetch(SHEET_URL+'?'+p.toString());
-  _resCache={};
+  await sheetCall({action:'resetToday',date:getToday()});
   await loadFromSheet();
   showToast('🔄 전체 예약 초기화 완료');
   renderAdmin();renderMap();
@@ -846,7 +844,6 @@ window.addEventListener('load',async()=>{
   document.getElementById('bs-overlay').addEventListener('click',closeSheet);
   document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('login').style.display!=='none')doLogin();});
 
-  // 자동 로그인
   const saved=getCU();
   if(saved&&saved.id){CU=saved;await enterApp();}
   else{document.getElementById('tlock').classList.toggle('hidden',canBook());}
