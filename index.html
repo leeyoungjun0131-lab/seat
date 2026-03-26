@@ -211,6 +211,10 @@ tr:hover td{background:var(--surface)}
       <label class="f-label">이름</label>
       <input class="f-inp" id="inp-name" type="text" placeholder="이유라"/>
     </div>
+    <div class="f-group" style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
+      <input type="checkbox" id="chk-remember" style="width:16px;height:16px;accent-color:var(--gold);cursor:pointer">
+      <label for="chk-remember" style="color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer">로그인 정보 저장</label>
+    </div>
     <button class="lg-btn" id="btn-login">로그인 →</button>
     <div class="lg-policy">
       <span class="hl">⏰ 운영 정책</span> · 예약 가능: <span class="hl">06:50~23:59</span> · 매일 <span class="hl">자정 00:00</span> 전체 초기화
@@ -369,7 +373,7 @@ const SEATS=[
   ['036',813,145,28,20],['037',814,167,28,20],['038',813,216,28,20],
 ];
 const TOTAL=SEATS.length;
-const SHEET_URL='https://script.google.com/macros/s/AKfycbw3XCfdVACFctb0dG5udNdjOQTIBNiNlzmV8lBJWl8NJzmnqFHkXeTZxZsUMoN1shGKgw/exec';
+const SHEET_URL='https://script.google.com/macros/s/AKfycbxEDWqIvmNvhX8_vt4vLruS9rwwV1Z23objsGY19PdEaGQ37OoZXcA7xB2ArvHd7O7tXw/exec';
 const MAP_IMG="url('https://i.imgur.com/dNX783P.png')";
 
 const DEFAULT_USERS={
@@ -495,6 +499,14 @@ function doLogin(){
   const users=getUsers(),u=users[id];
   if(!u){showToast('등록되지 않은 이메일 아이디입니다');return;}
   if(u.name!==nm){showToast('이름이 올바르지 않습니다');return;}
+  // 로그인 정보 저장 체크박스
+  if(document.getElementById('chk-remember').checked){
+    localStorage.setItem('pk_saved_id',id);
+    localStorage.setItem('pk_saved_name',nm);
+  } else {
+    localStorage.removeItem('pk_saved_id');
+    localStorage.removeItem('pk_saved_name');
+  }
   CU={id,...u};saveCU(CU);enterApp();
 }
 
@@ -539,9 +551,19 @@ function doLogout(){
   ['bnav-my','bnav-admin'].forEach(x=>document.getElementById(x)?.classList.remove('active'));
   document.getElementById('app').style.display='none';
   document.getElementById('login').style.display='flex';
-  document.getElementById('inp-id').value='';
-  document.getElementById('inp-name').value='';
   document.getElementById('tlock').classList.toggle('hidden',canBook());
+  // 저장된 로그인 정보 복원
+  const savedId=localStorage.getItem('pk_saved_id');
+  const savedName=localStorage.getItem('pk_saved_name');
+  if(savedId&&savedName){
+    document.getElementById('inp-id').value=savedId;
+    document.getElementById('inp-name').value=savedName;
+    document.getElementById('chk-remember').checked=true;
+  } else {
+    document.getElementById('inp-id').value='';
+    document.getElementById('inp-name').value='';
+    document.getElementById('chk-remember').checked=false;
+  }
 }
 
 // 탭
@@ -846,7 +868,17 @@ window.addEventListener('load',async()=>{
 
   const saved=getCU();
   if(saved&&saved.id){CU=saved;await enterApp();}
-  else{document.getElementById('tlock').classList.toggle('hidden',canBook());}
+  else{
+    document.getElementById('tlock').classList.toggle('hidden',canBook());
+    // 저장된 로그인 정보 복원
+    const savedId=localStorage.getItem('pk_saved_id');
+    const savedName=localStorage.getItem('pk_saved_name');
+    if(savedId&&savedName){
+      document.getElementById('inp-id').value=savedId;
+      document.getElementById('inp-name').value=savedName;
+      document.getElementById('chk-remember').checked=true;
+    }
+  }
 });
 </script>
 </body>
