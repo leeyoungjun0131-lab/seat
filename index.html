@@ -413,16 +413,16 @@ const clearCU=()=>localStorage.removeItem('pk_cu');
 // 직원 목록 (Sheets에서 로드)
 let _usersCache={};
 async function loadUsers(){
-  try {
+  try{
     const data=await sheetCall({action:'getUsers'});
-    console.log('loadUsers result:', data);
     if(data&&Object.keys(data).length>0){
-      _usersCache=data;
+      // DEFAULT_USERS와 Sheets 데이터 합치기
+      _usersCache={...DEFAULT_USERS,...data};
     } else {
       _usersCache={...DEFAULT_USERS};
     }
-  } catch(e) {
-    console.error('loadUsers error:', e);
+  }catch(e){
+    console.error('loadUsers error:',e);
     _usersCache={...DEFAULT_USERS};
   }
 }
