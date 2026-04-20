@@ -508,7 +508,7 @@ function applyMapBg(){
 }
 
 // 로그인
-function doLogin(){
+async function doLogin(){
   const id=document.getElementById('inp-id').value.trim().toLowerCase();
   const nm=document.getElementById('inp-name').value.trim();
   if(!id||!nm){showToast('이메일 아이디와 이름을 입력해주세요');return;}
