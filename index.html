@@ -373,7 +373,7 @@ const SEATS=[
   ['036',813,145,28,20],['037',814,167,28,20],['038',813,216,28,20],
 ];
 const TOTAL=SEATS.length;
-const SHEET_URL='https://script.google.com/macros/s/AKfycbxEDWqIvmNvhX8_vt4vLruS9rwwV1Z23objsGY19PdEaGQ37OoZXcA7xB2ArvHd7O7tXw/exec';
+const SHEET_URL='https://script.google.com/macros/s/AKfycbzv9yghSn2X1u4W8R0ONaEQPqG3VlxOfPD6VnBkaa8LUPKO4rVQJEzrpzIZYvzbdQEF1A/exec';
 const MAP_IMG="url('https://i.imgur.com/dNX783P.png')";
 
 const DEFAULT_USERS={
@@ -406,11 +406,22 @@ const DEFAULT_USERS={
 };
 
 // Storage
-const getUsers=()=>{try{const s=localStorage.getItem('pk_users');return s?JSON.parse(s):{...DEFAULT_USERS};}catch{return{...DEFAULT_USERS};}};
-const saveUsers=d=>localStorage.setItem('pk_users',JSON.stringify(d));
 const getCU=()=>{try{const s=localStorage.getItem('pk_cu');return s?JSON.parse(s):null;}catch{return null;}};
 const saveCU=d=>localStorage.setItem('pk_cu',JSON.stringify(d));
 const clearCU=()=>localStorage.removeItem('pk_cu');
+
+// 직원 목록 (Sheets에서 로드)
+let _usersCache={};
+async function loadUsers(){
+  const data=await sheetCall({action:'getUsers'});
+  if(data&&Object.keys(data).length>0){
+    _usersCache=data;
+  } else {
+    // Sheets에 데이터 없으면 DEFAULT_USERS 사용
+    _usersCache={...DEFAULT_USERS};
+  }
+}
+const getUsers=()=>_usersCache;
 
 // 한국 시간 기준 오늘 날짜
 const getToday=()=>{
@@ -792,16 +803,20 @@ async function adminReset(){
 }
 
 // 직원 관리
-function addUser(){
+async function addUser(){
   const name=document.getElementById('new-name').value.trim();
   const id=document.getElementById('new-id').value.trim().toLowerCase();
   if(!name||!id){showToast('이름과 이메일ID를 입력해주세요');return;}
   if(!/^[a-z0-9.\-]+$/.test(id)){showToast('이메일ID는 영문 소문자/숫자/점/하이픈만 가능합니다');return;}
-  const users=getUsers();
-  if(users[id]){showToast('이미 등록된 이메일ID입니다');return;}
-  users[id]={name,isAdmin:false};saveUsers(users);
-  document.getElementById('new-name').value='';document.getElementById('new-id').value='';
-  showToast(`✅ ${name} 직원 추가 완료`);renderAdmin();
+  if(_usersCache[id]){showToast('이미 등록된 이메일ID입니다');return;}
+  const result=await sheetCall({action:'addUser',userId:id,userName:name});
+  if(result&&result.result==='OK'){
+    await loadUsers();
+    document.getElementById('new-name').value='';
+    document.getElementById('new-id').value='';
+    showToast(`✅ ${name} 직원 추가 완료`);
+    renderAdmin();
+  }
 }
 
 function renderUserList(){
@@ -831,7 +846,13 @@ function renderUserList(){
       const ab=document.createElement('button');
       ab.textContent=u.isAdmin?'해제':'부여';
       ab.style.cssText=`background:${u.isAdmin?'#FEE2E2':'var(--gold-dim)'};border:1px solid ${u.isAdmin?'#D63030':'rgba(253,184,19,0.4)'};color:${u.isAdmin?'#D63030':'#8A6000'};border-radius:5px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:700`;
-      ab.addEventListener('click',()=>{const us=getUsers();us[id].isAdmin=!us[id].isAdmin;saveUsers(us);showToast(us[id].isAdmin?`👑 ${u.name} 관리자 권한 부여`:`${u.name} 관리자 권한 해제`);renderAdmin();});
+      ab.addEventListener('click',async()=>{
+        const newVal=!u.isAdmin;
+        await sheetCall({action:'setAdmin',userId:id,isAdmin:newVal});
+        await loadUsers();
+        showToast(newVal?`👑 ${u.name} 관리자 권한 부여`:`${u.name} 관리자 권한 해제`);
+        renderAdmin();
+      });
       adminTd.appendChild(ab);
     }
     const delTd=tr.querySelectorAll('td')[4];
@@ -840,7 +861,13 @@ function renderUserList(){
       const db=document.createElement('button');
       db.textContent='삭제';
       db.style.cssText='background:none;border:1px solid var(--red);color:var(--red);border-radius:5px;padding:3px 10px;font-size:11px;cursor:pointer;font-family:inherit';
-      db.addEventListener('click',()=>{if(!confirm(`${u.name} 직원을 삭제하시겠습니까?`))return;const us=getUsers();delete us[id];saveUsers(us);showToast('직원 삭제 완료');renderAdmin();});
+      db.addEventListener('click',async()=>{
+        if(!confirm(`${u.name} 직원을 삭제하시겠습니까?`))return;
+        await sheetCall({action:'deleteUser',userId:id});
+        await loadUsers();
+        showToast('직원 삭제 완료');
+        renderAdmin();
+      });
       delTd.appendChild(db);
     }
     tbody.appendChild(tr);
